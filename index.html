@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Matias turns 10 — A Decade of Awesome</title>
-<meta name="description" content="Matias is turning 10! Brawl-style birthday bash at Dream Bounce Playground — 24 August, 7:00 PM.">
+<title>Matias mbush 10 — Një Dekadë Madhështie</title>
+<meta name="description" content="Matias mbush 10 vjeç! Festë në stilin Brawl te Dream Bounce Playground — 24 Gusht, ora 19:00.">
 <meta name="theme-color" content="#140a2e">
-<meta property="og:title" content="Matias turns 10 — A Decade of Awesome">
-<meta property="og:description" content="Brawl-style birthday bash at Dream Bounce Playground · 24 August · 7:00 PM">
+<meta property="og:title" content="Matias mbush 10 — Një Dekadë Madhështie">
+<meta property="og:description" content="Festë në stilin Brawl te Dream Bounce Playground · 24 Gusht · ora 19:00">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,6 +150,23 @@
     border:.16rem solid #0d0620;box-shadow:0 .2rem 0 #0d0620;
   }
   .venue:active{transform:translateY(.2rem);box-shadow:0 .15rem 0 #0d0620}
+  /* bouncing players on the grass strip of the photo */
+  .grass{position:absolute;left:0;right:0;bottom:0;height:38%;pointer-events:none}
+  .grass .jump{
+    position:absolute;bottom:12%;font-style:normal;font-size:1.5rem;
+    filter:drop-shadow(0 .2rem .25rem rgba(0,0,0,.45));
+    animation:jumpUp 1.5s ease-in-out infinite;
+  }
+  .grass .j1{left:8%;font-size:1.8rem;animation-duration:1.3s}
+  .grass .j2{left:28%;animation-delay:.35s;animation-duration:1.7s}
+  .grass .j3{left:47%;animation-delay:.7s;animation-duration:1.15s}
+  .grass .j4{left:66%;animation-delay:.15s;animation-duration:1.55s}
+  .grass .j5{left:85%;animation-delay:.55s;animation-duration:1.35s}
+  @keyframes jumpUp{
+    0%,100%{transform:translateY(0) scale(1,.92)}
+    30%{transform:translateY(-1.5rem) scale(.96,1.06) rotate(-8deg)}
+    60%{transform:translateY(-.4rem) rotate(6deg)}
+  }
 
   /* ---------- SCROLL POWER RAIL (0 → 10) ---------- */
   .rail{
@@ -254,7 +271,7 @@
 <main class="wrap">
 
   <header class="hero">
-    <span class="badge">Brawl Alert · You're Invited</span>
+    <span class="badge">Alarm Brawl · Je i Ftuar</span>
     <h1 class="name">MATIAS</h1>
     <div class="ten">10</div>
 
@@ -292,67 +309,69 @@
       </div>
     </div>
 
-    <h2 class="motto">A DECADE OF <em>AWESOME</em></h2>
-    <p class="sub">10-TASTIC · Level 10 unlocked 🏆</p>
+    <h2 class="motto">NJË DEKADË <em>MADHËSHTIE</em></h2>
+    <p class="sub">10-TASTIK · Niveli 10 u zhbllokua 🏆</p>
   </header>
 
   <section class="card">
-    <h2>Battle Details</h2>
+    <h2>Detajet e Ftesës</h2>
 
     <a class="venue" href="https://maps.app.goo.gl/dkmtNPu6eJckya8q9" target="_blank" rel="noopener">
-      <img src="assets/venue.jpg" alt="Dream Bounce Playground — inflatable slides and games on the green"
+      <img src="assets/venue.jpg" alt="Dream Bounce Playground — kërcyese dhe lojëra mbi bar"
            loading="lazy" onerror="this.closest('.venue').classList.add('noimg')">
+      <span class="grass" aria-hidden="true">
+        <i class="jump j1">🤸</i><i class="jump j2">🎈</i><i class="jump j3">⚽</i>
+        <i class="jump j4">🏀</i><i class="jump j5">🎉</i>
+      </span>
       <span class="venue-tag">Dream Bounce Playground 📍</span>
     </a>
 
     <div class="rows">
       <div class="row">
         <div class="chip c-gold">📅</div>
-        <div><b>Monday, 24 August</b><span>Kick-off at 7:00 PM sharp</span></div>
+        <div><b>E hënë, 24 Gusht</b><span>Fillojmë në orën 19:00</span></div>
       </div>
       <div class="row">
         <div class="chip c-cyan">📍</div>
         <div><b>Dream Bounce Playground</b>
-          <span><a href="https://maps.app.goo.gl/dkmtNPu6eJckya8q9" target="_blank" rel="noopener">Open in Google Maps →</a></span>
+          <span><a href="https://maps.app.goo.gl/dkmtNPu6eJckya8q9" target="_blank" rel="noopener">Hape në Google Maps →</a></span>
         </div>
       </div>
       <div class="row">
         <div class="chip c-pink">🎂</div>
-        <div><b>Matias turns 10</b><span>Bring your best brawler energy</span></div>
+        <div><b>Matias mbush 10 vjeç</b><span>Eja me energji brawler-i!</span></div>
       </div>
       <div class="row">
-        <div class="chip c-lime">🧦</div>
-        <div><b>Come ready to bounce</b><span>Comfy clothes</span></div>
+        <div class="chip c-lime">👕</div>
+        <div><b>Gati për kërcim</b><span>Rroba komode</span></div>
       </div>
     </div>
   </section>
 
   <section class="card">
-    <h2>The Program</h2>
+    <h2>Programi</h2>
     <ol class="program">
-      <li><div><b>Birthday party</b><span>Songs, games and full brawl chaos</span></div></li>
-      <li><div><b>Food time</b><span>Refuel before the next round</span></div></li>
-      <li><div><b>Free play</b><span>Loose in the playground until the power runs out</span></div></li>
+      <li><div><b>Festa e ditëlindjes</b><span>Këngë, lojëra dhe shumë zhurmë</span></div></li>
+      <li><div><b>Ushqimi</b><span>Mbushim baterinë për raundin tjetër</span></div></li>
+      <li><div><b>Lojë e lirë</b><span>Kërcime në park deri sa të mbarojë energjia</span></div></li>
     </ol>
   </section>
 
   <section class="card game" id="game">
-    <h2>Level 10 Unlocked</h2>
-    <p class="gtip" id="gtip">Keep scrolling to power Matias all the way up…</p>
+    <h2>Niveli 10</h2>
+    <p class="gtip" id="gtip">Vazhdo poshtë për ta çuar Matiasin në nivelin 10…</p>
     <div class="trophy" id="trophy">🏆</div>
-    <div class="winline" id="winline">A DECADE OF AWESOME!</div>
+    <div class="winline" id="winline">NJË DEKADË MADHËSHTIE!</div>
     <div class="burst" id="burst" aria-hidden="true"></div>
   </section>
 
   <section class="cta">
-    <p>Are you in? Tap below and confirm on WhatsApp 👇</p>
+    <p>Na konfirmo pjesëmarrjen 👇</p>
     <a class="wa" id="waLink" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.2 1.5Z"/></svg>
-      CONFIRM ON WHATSAPP
+      KONFIRMO NË WHATSAPP
     </a>
   </section>
-
-  <footer>Made with 💛 for Matias · 24.08</footer>
 </main>
 
 <script>
@@ -362,7 +381,7 @@
   const WHATSAPP_NUMBER = "355693106681";
 
   const msg = encodeURIComponent(
-    "Hi! 🎉 We're coming to Matias' 10th birthday at Dream Bounce Playground on 24 August at 7 PM. Name: "
+    "Përshëndetje! 🎉 Po vijmë në ditëlindjen e 10-të të Matiasit, te Dream Bounce Playground, më 24 Gusht në orën 19:00. Emri: "
   );
   document.getElementById("waLink").href =
     "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
@@ -394,17 +413,17 @@
     const burst  = document.getElementById("burst");
 
     const CHEERS = [
-      "Keep scrolling to power Matias all the way up…",
-      "Level 1 — a baby brawler appears 👶",
-      "Level 2 — learning to bounce 🤸",
-      "Level 3 — first victory dance 💃",
-      "Level 4 — snack master unlocked 🍕",
-      "Level 5 — halfway to legendary ⚡",
-      "Level 6 — super speed acquired 🏃",
-      "Level 7 — combo king 🔥",
-      "Level 8 — almost unstoppable 💪",
-      "Level 9 — one scroll from glory ✨",
-      "LEVEL 10 — 10 years of pure awesome 🏆"
+      "Vazhdo poshtë për ta çuar Matiasin në nivelin 10…",
+      "Niveli 1 — lind një brawler i vogël 👶",
+      "Niveli 2 — mëson të kërcejë 🤸",
+      "Niveli 3 — vallëzimi i parë i fitores 💃",
+      "Niveli 4 — mjeshtër i ëmbëlsirave 🍕",
+      "Niveli 5 — gjysma e rrugës drejt legjendës ⚡",
+      "Niveli 6 — shpejtësi maksimale 🏃",
+      "Niveli 7 — mbret i kombove 🔥",
+      "Niveli 8 — thuajse i pandalshëm 💪",
+      "Niveli 9 — një hap nga lavdia ✨",
+      "NIVELI 10 — 10 vjet plot madhështi 🏆"
     ];
 
     /* tick marks every 10% of the tube */
