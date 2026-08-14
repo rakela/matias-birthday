@@ -201,6 +201,55 @@
   }
   @keyframes pulseFill{0%,100%{filter:brightness(1)}50%{filter:brightness(1.6)}}
 
+  /* ---------- COUNTDOWN ---------- */
+  .cd{text-align:center}
+  .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.8rem}
+  .cd-grid > div{
+    background:rgba(255,255,255,.07);border:.15rem solid #0d0620;border-radius:.9rem;
+    padding:.6rem .2rem;box-shadow:0 .25rem 0 #0d0620;
+  }
+  .cd-grid b{
+    display:block;font-family:"Lilita One",cursive;font-weight:400;font-size:1.9rem;
+    color:var(--gold);line-height:1;text-shadow:0 .15rem 0 #0d0620;
+  }
+  .cd-grid span{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;opacity:.75}
+  .cd-note{margin:0;font-size:.9rem;opacity:.8}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{overflow:hidden;margin:1.4rem -1.15rem;padding:.5rem 0;
+    border-block:.16rem dashed rgba(255,255,255,.18)}
+  .marquee-in{display:flex;gap:1.4rem;width:max-content;animation:slide 18s linear infinite}
+  .marquee-in i{font-style:normal;font-size:1.7rem;animation:hop 1.4s ease-in-out infinite}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- RULES ---------- */
+  ul.rules{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+  ul.rules li{
+    display:flex;align-items:center;gap:.7rem;font-size:.98rem;
+    background:rgba(255,255,255,.06);border-radius:.8rem;padding:.6rem .75rem;
+    border-left:.3rem solid var(--gold);
+  }
+  ul.rules li:nth-child(2n){border-left-color:var(--pink)}
+  ul.rules li:nth-child(3n){border-left-color:var(--cyan)}
+  ul.rules li span{font-size:1.35rem;animation:hop 1.8s ease-in-out infinite}
+  ul.rules li:nth-child(2n) span{animation-delay:.3s}
+  ul.rules li:nth-child(3n) span{animation-delay:.6s}
+
+  /* ---------- SQUAD ---------- */
+  .squad{text-align:center}
+  .squad-text{margin:0 0 1rem;font-size:.95rem;opacity:.85}
+  .squad-row{display:flex;justify-content:center;gap:.55rem;flex-wrap:wrap}
+  .squad-row i{
+    font-style:normal;font-size:1.8rem;width:2.9rem;height:2.9rem;display:grid;place-items:center;
+    background:rgba(255,255,255,.08);border:.16rem solid #0d0620;border-radius:.8rem;
+    box-shadow:0 .25rem 0 #0d0620;animation:hop 1.6s ease-in-out infinite;
+  }
+  .squad-row i:nth-child(2){animation-delay:.15s}
+  .squad-row i:nth-child(3){animation-delay:.3s}
+  .squad-row i:nth-child(4){animation-delay:.45s}
+  .squad-row i:nth-child(5){animation-delay:.6s}
+  .squad-row i:nth-child(6){animation-delay:.75s}
+
   /* ---------- LEVEL 10 REVEAL ---------- */
   .game{text-align:center}
   .gtip{font-size:.92rem;opacity:.85;margin:0 0 1.1rem;font-weight:800}
@@ -271,7 +320,7 @@
 <main class="wrap">
 
   <header class="hero">
-    <span class="badge">Alarm Brawl · Je i Ftuar</span>
+    <span class="badge">Brawl Stars Notice</span>
     <h1 class="name">MATIAS</h1>
     <div class="ten">10</div>
 
@@ -309,8 +358,7 @@
       </div>
     </div>
 
-    <h2 class="motto">NJË DEKADË <em>MADHËSHTIE</em></h2>
-    <p class="sub">10-TASTIK · Niveli 10 u zhbllokua 🏆</p>
+    <h2 class="motto">A DECADE OF <em>AWESOME</em></h2>
   </header>
 
   <section class="card">
@@ -323,7 +371,7 @@
         <i class="jump j1">🤸</i><i class="jump j2">🎈</i><i class="jump j3">⚽</i>
         <i class="jump j4">🏀</i><i class="jump j5">🎉</i>
       </span>
-      <span class="venue-tag">Dream Bounce Playground 📍</span>
+      <span class="venue-tag">Dream Bounce · Liqeni i Farkës 📍</span>
     </a>
 
     <div class="rows">
@@ -334,6 +382,7 @@
       <div class="row">
         <div class="chip c-cyan">📍</div>
         <div><b>Dream Bounce Playground</b>
+          <span>Në Liqenin e Farkës</span>
           <span><a href="https://maps.app.goo.gl/dkmtNPu6eJckya8q9" target="_blank" rel="noopener">Hape në Google Maps →</a></span>
         </div>
       </div>
@@ -357,16 +406,49 @@
     </ol>
   </section>
 
+  <section class="card cd">
+    <h2>Sa Ka Mbetur?</h2>
+    <div class="cd-grid" id="cdGrid">
+      <div><b id="cdD">--</b><span>ditë</span></div>
+      <div><b id="cdH">--</b><span>orë</span></div>
+      <div><b id="cdM">--</b><span>min</span></div>
+      <div><b id="cdS">--</b><span>sek</span></div>
+    </div>
+    <p class="cd-note" id="cdNote">deri sa të fillojë festa 🎉</p>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-in" id="marqueeIn"></div></div>
+
+  <section class="card">
+    <h2>Rregullat e Festës</h2>
+    <ul class="rules">
+      <li><span>🤸</span> Kërce sa të mundesh</li>
+      <li><span>😂</span> Qesh me zë të lartë</li>
+      <li><span>🤝</span> Luaj me të gjithë</li>
+      <li><span>🍕</span> Mos harro të hash</li>
+      <li><span>📸</span> Bëj një foto me Matiasin</li>
+      <li><span>🔋</span> Ik në shtëpi pa bateri</li>
+    </ul>
+  </section>
+
+  <section class="card squad">
+    <h2>Ekipi i Ftuar</h2>
+    <p class="squad-text">Çdo festë ka nevojë për ekipin e vet. Ti je pjesë e tij — hidhu në fushë me ne! 💥</p>
+    <div class="squad-row" aria-hidden="true">
+      <i>🦸</i><i>🧙</i><i>🥷</i><i>🤖</i><i>👾</i><i>🐻</i>
+    </div>
+  </section>
+
   <section class="card game" id="game">
     <h2>Niveli 10</h2>
     <p class="gtip" id="gtip">Vazhdo poshtë për ta çuar Matiasin në nivelin 10…</p>
     <div class="trophy" id="trophy">🏆</div>
-    <div class="winline" id="winline">NJË DEKADË MADHËSHTIE!</div>
+    <div class="winline" id="winline">A DECADE OF AWESOME!</div>
     <div class="burst" id="burst" aria-hidden="true"></div>
   </section>
 
   <section class="cta">
-    <p>Na konfirmo pjesëmarrjen 👇</p>
+    <p>Na konfirmoni pjesëmarrjen në WhatsApp 👇</p>
     <a class="wa" id="waLink" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.2 1.5Z"/></svg>
       KONFIRMO NË WHATSAPP
@@ -402,6 +484,40 @@
     }
   })();
 
+  /* ====== COUNTDOWN ====== */
+  (function () {
+    const target = new Date(2026, 7, 24, 19, 0, 0); // 24 Gusht 2026, 19:00
+    const D = document.getElementById("cdD"), H = document.getElementById("cdH"),
+          M = document.getElementById("cdM"), S = document.getElementById("cdS"),
+          note = document.getElementById("cdNote");
+    const pad = n => String(n).padStart(2, "0");
+
+    function tick() {
+      let diff = target - new Date();
+      if (diff <= 0) {
+        D.textContent = H.textContent = M.textContent = S.textContent = "00";
+        note.textContent = "Festa filloi! 🎉";
+        return;
+      }
+      const s = Math.floor(diff / 1000);
+      D.textContent = Math.floor(s / 86400);
+      H.textContent = pad(Math.floor(s / 3600) % 24);
+      M.textContent = pad(Math.floor(s / 60) % 60);
+      S.textContent = pad(s % 60);
+      setTimeout(tick, 1000);
+    }
+    tick();
+  })();
+
+  /* ====== EMOJI MARQUEE ====== */
+  (function () {
+    const row = ["🎈","🏀","🎉","🤸","⭐","🍕","🎂","💥","🥳","⚽"];
+    const box = document.getElementById("marqueeIn");
+    const html = row.map((e, i) =>
+      `<i style="animation-delay:${(i * 0.12).toFixed(2)}s">${e}</i>`).join("");
+    box.innerHTML = html + html; // duplicated for a seamless loop
+  })();
+
   /* ====== SCROLL POWER BAR: fills 0 → 10 down the page ====== */
   (function () {
     const rail   = document.getElementById("rail");
@@ -423,7 +539,7 @@
       "Niveli 7 — mbret i kombove 🔥",
       "Niveli 8 — thuajse i pandalshëm 💪",
       "Niveli 9 — një hap nga lavdia ✨",
-      "NIVELI 10 — 10 vjet plot madhështi 🏆"
+      "NIVELI 10 — i zhbllokuar! 🏆"
     ];
 
     /* tick marks every 10% of the tube */
