@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matias turns 10 — A Decade of Awesome</title>
+<meta name="description" content="Matias is turning 10! Brawl-style birthday bash at Dream Bounce Playground — 24 August, 7:00 PM.">
+<meta name="theme-color" content="#140a2e">
+<meta property="og:title" content="Matias turns 10 — A Decade of Awesome">
+<meta property="og:description" content="Brawl-style birthday bash at Dream Bounce Playground · 24 August · 7:00 PM">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:ital,wght@0,700;0,900;1,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#140a2e;
+    --ink-2:#241354;
+    --grape:#6c2bd9;
+    --gold:#ffc300;
+    --gold-hot:#ff9f1c;
+    --pink:#ff2d87;
+    --cyan:#25e6d6;
+    --lime:#8ef244;
+    --paper:#fff6e0;
+    --shadow:0 .5rem 0 rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(120% 60% at 50% 0%, #3a1b7a 0%, transparent 60%),
+      radial-gradient(90% 50% at 10% 30%, rgba(255,45,135,.35) 0%, transparent 60%),
+      radial-gradient(90% 50% at 95% 70%, rgba(37,230,214,.28) 0%, transparent 60%),
+      var(--ink);
+    color:var(--paper);
+    font-family:"Nunito",system-ui,sans-serif;
+    font-weight:800;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+  /* arcade grain + scanline atmosphere */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 1px,transparent 1px 4px);
+    opacity:.35;mix-blend-mode:multiply;
+  }
+  .wrap{max-width:33rem;margin:0 auto;padding:1.25rem 1.15rem 4rem;position:relative;z-index:2}
+
+  h1,h2,h3,.display{font-family:"Lilita One",cursive;font-weight:400;letter-spacing:.02em;line-height:.95;margin:0}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:2.2rem 0 1rem;text-align:center;position:relative}
+  .badge{
+    display:inline-block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+    background:var(--pink);color:#fff;padding:.45rem .85rem;border-radius:999px;
+    border:.2rem solid #0d0620;box-shadow:0 .28rem 0 #0d0620;transform:rotate(-3deg);
+    animation:pop .8s cubic-bezier(.2,1.6,.4,1) both;
+  }
+  .name{
+    font-size:clamp(3.2rem,17vw,5.6rem);margin:.7rem 0 .1rem;
+    color:var(--gold);
+    -webkit-text-stroke:.14rem #0d0620;
+    text-shadow:0 .38rem 0 #0d0620, 0 .8rem 1.4rem rgba(0,0,0,.5);
+    animation:pop .9s .1s cubic-bezier(.2,1.6,.4,1) both;
+  }
+  .ten{
+    position:relative;display:inline-block;margin:.35rem 0 .2rem;
+    font-family:"Lilita One",cursive;font-size:clamp(5.5rem,34vw,11rem);line-height:.8;
+    background:linear-gradient(180deg,#fff7cf 0%,var(--gold) 45%,var(--gold-hot) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 .3rem 0 #0d0620) drop-shadow(0 .9rem 1.2rem rgba(0,0,0,.55));
+    animation:bounceBig 2.2s .5s ease-in-out infinite;
+  }
+  .ten::after{
+    content:"";position:absolute;left:50%;bottom:-.9rem;translate:-50% 0;
+    width:62%;height:.9rem;border-radius:50%;background:rgba(0,0,0,.4);filter:blur(6px);
+    animation:squash 2.2s .5s ease-in-out infinite;
+  }
+  .motto{
+    font-size:clamp(1.15rem,5.4vw,1.7rem);margin:1.5rem 0 .2rem;color:#fff;
+    -webkit-text-stroke:.06rem #0d0620;text-shadow:0 .2rem 0 #0d0620;
+  }
+  .motto em{color:var(--cyan);font-style:normal}
+  .sub{font-size:.95rem;opacity:.85;margin:.55rem 0 0;font-weight:800}
+
+  /* ---------- BRAWLERS ---------- */
+  .crew{display:flex;justify-content:center;gap:.6rem;margin:1.6rem 0 .4rem;flex-wrap:wrap}
+  .brawler{width:4.6rem;height:5.2rem;position:relative;animation:hop 1.6s ease-in-out infinite}
+  .brawler:nth-child(2){animation-delay:.2s}
+  .brawler:nth-child(3){animation-delay:.4s}
+  .brawler:nth-child(4){animation-delay:.6s}
+  .brawler svg{width:100%;height:100%;filter:drop-shadow(0 .25rem 0 rgba(0,0,0,.45))}
+
+  /* ---------- CARDS ---------- */
+  .card{
+    background:linear-gradient(180deg,var(--ink-2),#190d3c);
+    border:.22rem solid #0d0620;border-radius:1.4rem;
+    box-shadow:0 .5rem 0 #0d0620, 0 1.4rem 2rem rgba(0,0,0,.45);
+    padding:1.3rem 1.15rem;margin:1.15rem 0;position:relative;overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(135deg,rgba(255,255,255,.045) 0 .6rem,transparent .6rem 1.2rem);
+  }
+  .card h2{
+    font-size:1.45rem;color:var(--gold);-webkit-text-stroke:.05rem #0d0620;
+    text-shadow:0 .18rem 0 #0d0620;margin-bottom:.9rem;
+  }
+  .rows{display:grid;gap:.85rem}
+  .row{display:flex;gap:.8rem;align-items:flex-start}
+  .chip{
+    flex:0 0 2.6rem;height:2.6rem;border-radius:.8rem;display:grid;place-items:center;
+    font-size:1.25rem;border:.18rem solid #0d0620;box-shadow:0 .22rem 0 #0d0620;
+  }
+  .c-gold{background:var(--gold)}.c-pink{background:var(--pink)}
+  .c-cyan{background:var(--cyan)}.c-lime{background:var(--lime)}
+  .row b{display:block;font-family:"Lilita One",cursive;font-weight:400;font-size:1.15rem;color:#fff}
+  .row span{display:block;font-size:.9rem;opacity:.82;font-weight:700;line-height:1.35}
+  .row a{color:var(--cyan);text-decoration:none;border-bottom:.12rem dashed var(--cyan)}
+
+  /* ---------- PROGRAM ---------- */
+  ol.program{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;counter-reset:step}
+  ol.program li{
+    counter-increment:step;display:flex;gap:.85rem;align-items:center;
+    background:rgba(255,255,255,.06);border:.15rem solid rgba(255,255,255,.12);
+    border-radius:1rem;padding:.75rem .85rem;transition:transform .18s cubic-bezier(.2,1.6,.4,1);
+  }
+  ol.program li:active{transform:scale(.97)}
+  ol.program li::before{
+    content:counter(step);flex:0 0 2.1rem;height:2.1rem;border-radius:50%;
+    display:grid;place-items:center;background:var(--gold);color:#0d0620;
+    font-family:"Lilita One",cursive;font-size:1.15rem;
+    border:.16rem solid #0d0620;box-shadow:0 .2rem 0 #0d0620;
+  }
+  ol.program li b{font-family:"Lilita One",cursive;font-weight:400;font-size:1.1rem;display:block}
+  ol.program li span{font-size:.85rem;opacity:.8;font-weight:700}
+
+  /* ---------- CTA ---------- */
+  .cta{text-align:center;margin:2rem 0 .5rem}
+  .cta p{font-size:1rem;margin:0 0 1rem;opacity:.9}
+  .wa{
+    display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;
+    background:linear-gradient(180deg,#3ce77a,#17a94f);color:#06240f;
+    font-family:"Lilita One",cursive;font-size:1.35rem;padding:1rem 1.6rem;border-radius:1.1rem;
+    border:.22rem solid #0d0620;box-shadow:0 .5rem 0 #0d0620;
+    animation:nudge 1.8s ease-in-out infinite;
+  }
+  .wa:active{transform:translateY(.35rem);box-shadow:0 .15rem 0 #0d0620;animation:none}
+  .wa svg{width:1.5rem;height:1.5rem;fill:#06240f}
+  .fine{font-size:.8rem;opacity:.65;margin-top:1rem;font-weight:700}
+
+  footer{text-align:center;margin-top:2.5rem;font-size:.8rem;opacity:.55}
+
+  /* ---------- confetti / floating stars ---------- */
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .stars i{
+    position:absolute;top:-8vh;font-style:normal;font-size:1.2rem;opacity:.75;
+    animation:fall linear infinite;
+  }
+
+  @keyframes pop{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1}}
+  @keyframes bounceBig{0%,100%{transform:translateY(0) scaleY(1)}45%{transform:translateY(-1.6rem) scaleY(1.05)}55%{transform:translateY(-1.4rem)}90%{transform:translateY(.1rem) scaleY(.94)}}
+  @keyframes squash{0%,100%{transform:translate(-50%,0) scaleX(1);opacity:.4}50%{transform:translate(-50%,0) scaleX(.6);opacity:.22}}
+  @keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-.85rem) rotate(-3deg)}}
+  @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-.45rem)}}
+  @keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<main class="wrap">
+
+  <header class="hero">
+    <span class="badge">Brawl Alert · You're Invited</span>
+    <h1 class="name">MATIAS</h1>
+    <div class="ten">10</div>
+
+    <div class="crew" aria-hidden="true">
+      <div class="brawler">
+        <svg viewBox="0 0 60 68"><g stroke="#0d0620" stroke-width="3.2">
+          <ellipse cx="30" cy="40" rx="20" ry="22" fill="#ffc300"/>
+          <circle cx="23" cy="36" r="5" fill="#fff"/><circle cx="38" cy="36" r="5" fill="#fff"/>
+          <path d="M22 50q8 7 16 0" fill="none" stroke-linecap="round"/>
+          <path d="M14 20l16 8 16-8-6 12H20z" fill="#ff2d87"/>
+        </g><circle cx="23" cy="37" r="2.2" fill="#0d0620"/><circle cx="38" cy="37" r="2.2" fill="#0d0620"/></svg>
+      </div>
+      <div class="brawler">
+        <svg viewBox="0 0 60 68"><g stroke="#0d0620" stroke-width="3.2">
+          <rect x="10" y="20" width="40" height="42" rx="13" fill="#25e6d6"/>
+          <circle cx="22" cy="38" r="5.5" fill="#fff"/><circle cx="39" cy="38" r="5.5" fill="#fff"/>
+          <path d="M21 52h18" stroke-linecap="round"/>
+          <path d="M30 20V8" stroke-linecap="round"/><circle cx="30" cy="6" r="4" fill="#ff2d87"/>
+        </g><circle cx="23" cy="39" r="2.4" fill="#0d0620"/><circle cx="40" cy="39" r="2.4" fill="#0d0620"/></svg>
+      </div>
+      <div class="brawler">
+        <svg viewBox="0 0 60 68"><g stroke="#0d0620" stroke-width="3.2">
+          <path d="M30 16l20 12v22L30 62 10 50V28z" fill="#8ef244"/>
+          <circle cx="23" cy="37" r="5" fill="#fff"/><circle cx="38" cy="37" r="5" fill="#fff"/>
+          <path d="M23 50q7 6 14 0" fill="none" stroke-linecap="round"/>
+        </g><circle cx="24" cy="38" r="2.2" fill="#0d0620"/><circle cx="39" cy="38" r="2.2" fill="#0d0620"/></svg>
+      </div>
+      <div class="brawler">
+        <svg viewBox="0 0 60 68"><g stroke="#0d0620" stroke-width="3.2">
+          <circle cx="30" cy="42" r="20" fill="#ff2d87"/>
+          <path d="M12 30q6-14 18-14t18 14" fill="#6c2bd9"/>
+          <circle cx="23" cy="42" r="5" fill="#fff"/><circle cx="38" cy="42" r="5" fill="#fff"/>
+          <path d="M24 54q6 5 12 0" fill="none" stroke-linecap="round"/>
+        </g><circle cx="24" cy="43" r="2.2" fill="#0d0620"/><circle cx="39" cy="43" r="2.2" fill="#0d0620"/></svg>
+      </div>
+    </div>
+
+    <h2 class="motto">A DECADE OF <em>AWESOME</em></h2>
+    <p class="sub">10-TASTIC · Level 10 unlocked 🏆</p>
+  </header>
+
+  <section class="card">
+    <h2>Battle Details</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="chip c-gold">📅</div>
+        <div><b>Sunday, 24 August</b><span>Kick-off at 7:00 PM sharp</span></div>
+      </div>
+      <div class="row">
+        <div class="chip c-cyan">📍</div>
+        <div><b>Dream Bounce Playground</b>
+          <span><a href="https://maps.app.goo.gl/dkmtNPu6eJckya8q9" target="_blank" rel="noopener">Open in Google Maps →</a></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chip c-pink">🎂</div>
+        <div><b>Matias turns 10</b><span>Bring your best brawler energy</span></div>
+      </div>
+      <div class="row">
+        <div class="chip c-lime">🧦</div>
+        <div><b>Come ready to bounce</b><span>Comfy clothes + socks for the playground</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>The Program</h2>
+    <ol class="program">
+      <li><div><b>Birthday party</b><span>Songs, games and full brawl chaos</span></div></li>
+      <li><div><b>Food time</b><span>Refuel before the next round</span></div></li>
+      <li><div><b>Free play</b><span>Loose in the playground until the power runs out</span></div></li>
+    </ol>
+  </section>
+
+  <section class="cta">
+    <p>Are you in? Tap below and confirm on WhatsApp 👇</p>
+    <a class="wa" id="waLink" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.2 1.5Z"/></svg>
+      CONFIRM ON WHATSAPP
+    </a>
+    <p class="fine">Please confirm by 20 August so we can count the snacks 🍕</p>
+  </section>
+
+  <footer>Made with 💛 for Matias · 24.08</footer>
+</main>
+
+<script>
+  /* ====== EDIT ME ======
+     Put the parent's WhatsApp number in full international format,
+     digits only (no +, spaces or dashes). Example: 355691234567 */
+  const WHATSAPP_NUMBER = "355690000000";
+
+  const msg = encodeURIComponent(
+    "Hi! 🎉 We're coming to Matias' 10th birthday at Dream Bounce Playground on 24 August at 7 PM. Name: "
+  );
+  document.getElementById("waLink").href =
+    "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+
+  /* falling stars / confetti */
+  (function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const glyphs = ["⭐","🌟","💥","🎈","🏆","✨"];
+    const box = document.getElementById("stars");
+    for (let i = 0; i < 18; i++) {
+      const s = document.createElement("i");
+      s.textContent = glyphs[i % glyphs.length];
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.fontSize = (0.8 + Math.random() * 1.1).toFixed(2) + "rem";
+      s.style.animationDuration = (7 + Math.random() * 9).toFixed(1) + "s";
+      s.style.animationDelay = (-Math.random() * 12).toFixed(1) + "s";
+      box.appendChild(s);
+    }
+  })();
+
+  /* tap-to-bounce on the big 10 */
+  const ten = document.querySelector(".ten");
+  ten.addEventListener("click", () => {
+    ten.animate(
+      [{ transform: "scale(1)" }, { transform: "scale(1.25) rotate(-6deg)" }, { transform: "scale(1)" }],
+      { duration: 520, easing: "cubic-bezier(.2,1.6,.4,1)" }
+    );
+  });
+</script>
+</body>
+</html>
