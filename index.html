@@ -136,46 +136,71 @@
   ol.program li b{font-family:"Lilita One",cursive;font-weight:400;font-size:1.1rem;display:block}
   ol.program li span{font-size:.85rem;opacity:.8;font-weight:700}
 
-  /* ---------- MINI GAME ---------- */
+  /* ---------- VENUE PHOTO ---------- */
+  .venue{
+    display:block;position:relative;margin:0 0 1.2rem;border-radius:1rem;overflow:hidden;
+    border:.2rem solid #0d0620;box-shadow:0 .35rem 0 #0d0620;text-decoration:none;
+    aspect-ratio:4/3;background:linear-gradient(180deg,#4bb8ff 0 55%,var(--lime) 55% 100%);
+  }
+  .venue img{width:100%;height:100%;object-fit:cover;display:block}
+  .venue.noimg img{display:none}
+  .venue-tag{
+    position:absolute;left:.6rem;bottom:.6rem;background:var(--gold);color:#0d0620;
+    font-family:"Lilita One",cursive;font-size:.95rem;padding:.3rem .7rem;border-radius:.6rem;
+    border:.16rem solid #0d0620;box-shadow:0 .2rem 0 #0d0620;
+  }
+  .venue:active{transform:translateY(.2rem);box-shadow:0 .15rem 0 #0d0620}
+
+  /* ---------- SCROLL POWER RAIL (0 → 10) ---------- */
+  .rail{
+    position:fixed;right:.55rem;top:50%;translate:0 -50%;z-index:8;
+    display:flex;flex-direction:column;align-items:center;gap:.35rem;
+    pointer-events:none;opacity:.96;
+  }
+  .rail-num{
+    font-family:"Lilita One",cursive;font-size:1.5rem;color:var(--gold);
+    -webkit-text-stroke:.06rem #0d0620;text-shadow:0 .15rem 0 #0d0620;
+    transition:color .2s;
+  }
+  .rail.maxed .rail-num{color:var(--lime)}
+  .rail-tube{
+    position:relative;width:1.35rem;height:min(46vh,20rem);border-radius:1rem;
+    background:rgba(13,6,32,.72);border:.16rem solid #0d0620;
+    box-shadow:inset 0 0 .6rem rgba(0,0,0,.7);overflow:hidden;
+  }
+  .rail-fill{
+    position:absolute;left:0;right:0;bottom:0;height:0%;
+    background:linear-gradient(180deg,var(--lime),var(--gold) 45%,var(--gold-hot) 75%,var(--pink));
+    transition:height .18s linear;
+  }
+  .rail.maxed .rail-fill{animation:pulseFill .7s ease-in-out 3}
+  .rail-pips{position:absolute;inset:0}
+  .rail-pips b{
+    position:absolute;left:0;right:0;height:.12rem;background:rgba(0,0,0,.45);
+  }
+  .rail-cap{
+    font-family:"Lilita One",cursive;font-size:.6rem;letter-spacing:.14em;
+    color:rgba(255,255,255,.6);
+  }
+  @keyframes pulseFill{0%,100%{filter:brightness(1)}50%{filter:brightness(1.6)}}
+
+  /* ---------- LEVEL 10 REVEAL ---------- */
   .game{text-align:center}
-  .gtip{font-size:.9rem;opacity:.85;margin:0 0 1rem;min-height:2.4em;font-weight:800}
-  .meter{display:flex;gap:.28rem;justify-content:center;margin-bottom:1.1rem;flex-wrap:nowrap}
-  .meter span{
-    flex:1 1 0;max-width:1.9rem;height:1.5rem;border-radius:.35rem;
-    background:rgba(255,255,255,.1);border:.14rem solid #0d0620;
-    display:grid;place-items:center;font-size:.62rem;color:rgba(255,255,255,.45);
-    font-family:"Lilita One",cursive;transition:transform .25s cubic-bezier(.2,1.8,.4,1),background .25s;
+  .gtip{font-size:.92rem;opacity:.85;margin:0 0 1.1rem;font-weight:800}
+  .trophy{font-size:4.2rem;line-height:1;filter:grayscale(1);opacity:.35;transition:.5s}
+  .winline{
+    font-family:"Lilita One",cursive;font-size:1.6rem;margin-top:.6rem;
+    color:var(--lime);-webkit-text-stroke:.06rem #0d0620;text-shadow:0 .2rem 0 #0d0620;
+    opacity:0;transform:scale(.6);transition:.5s cubic-bezier(.2,1.8,.4,1);
   }
-  .meter span.on{
-    background:linear-gradient(180deg,var(--gold),var(--gold-hot));
-    color:#0d0620;transform:translateY(-.25rem) scale(1.1);
-    box-shadow:0 .22rem 0 #0d0620;
-  }
-  .meter span.max{background:linear-gradient(180deg,#fff,var(--lime))}
-  .lvlwrap{display:flex;align-items:center;justify-content:center;gap:1.1rem}
-  .lvl{
-    font-family:"Lilita One",cursive;font-size:3.6rem;line-height:1;min-width:2.6ch;
-    color:var(--cyan);-webkit-text-stroke:.1rem #0d0620;text-shadow:0 .25rem 0 #0d0620;
-  }
-  .lvl.win{color:var(--lime)}
-  .tapper{
-    width:5rem;height:5rem;border-radius:50%;font-size:2.4rem;cursor:pointer;
-    background:radial-gradient(circle at 35% 30%,#ffe27a,var(--gold-hot));
-    border:.22rem solid #0d0620;box-shadow:0 .5rem 0 #0d0620;
-    animation:nudge 1.6s ease-in-out infinite;
-  }
-  .tapper:active{transform:translateY(.4rem) scale(.94);box-shadow:0 .12rem 0 #0d0620;animation:none}
-  .tapper[disabled]{filter:grayscale(.2);animation:spinwin .9s ease-in-out 2}
+  .game.won .trophy{filter:none;opacity:1;animation:spinwin .8s ease-in-out 3}
+  .game.won .winline{opacity:1;transform:scale(1)}
   .burst{position:relative;height:0}
   .burst i{
     position:absolute;left:50%;top:0;font-style:normal;font-size:1.4rem;
     animation:blast .9s ease-out forwards;
   }
-  .reset{
-    margin-top:1.1rem;background:transparent;color:var(--cyan);border:.15rem dashed var(--cyan);
-    border-radius:.8rem;padding:.5rem .9rem;font-family:"Nunito",sans-serif;font-weight:900;cursor:pointer;
-  }
-  @keyframes spinwin{0%,100%{transform:rotate(0)}25%{transform:rotate(14deg)}75%{transform:rotate(-14deg)}}
+  @keyframes spinwin{0%,100%{transform:rotate(0) scale(1)}25%{transform:rotate(14deg) scale(1.12)}75%{transform:rotate(-14deg) scale(1.12)}}
   @keyframes blast{to{transform:translate(var(--dx),var(--dy)) rotate(360deg);opacity:0}}
 
   /* ---------- CTA ---------- */
@@ -215,6 +240,16 @@
 </head>
 <body>
 <div class="stars" id="stars" aria-hidden="true"></div>
+
+<!-- vertical 0 → 10 power bar, fills as you scroll -->
+<aside class="rail" id="rail" aria-hidden="true">
+  <div class="rail-num" id="railNum">0</div>
+  <div class="rail-tube">
+    <div class="rail-fill" id="railFill"></div>
+    <div class="rail-pips" id="railPips"></div>
+  </div>
+  <div class="rail-cap">LVL</div>
+</aside>
 
 <main class="wrap">
 
@@ -263,6 +298,13 @@
 
   <section class="card">
     <h2>Battle Details</h2>
+
+    <a class="venue" href="https://maps.app.goo.gl/dkmtNPu6eJckya8q9" target="_blank" rel="noopener">
+      <img src="assets/venue.jpg" alt="Dream Bounce Playground — inflatable slides and games on the green"
+           loading="lazy" onerror="this.closest('.venue').classList.add('noimg')">
+      <span class="venue-tag">Dream Bounce Playground 📍</span>
+    </a>
+
     <div class="rows">
       <div class="row">
         <div class="chip c-gold">📅</div>
@@ -280,7 +322,7 @@
       </div>
       <div class="row">
         <div class="chip c-lime">🧦</div>
-        <div><b>Come ready to bounce</b><span>Comfy clothes + socks for the playground</span></div>
+        <div><b>Come ready to bounce</b><span>Comfy clothes</span></div>
       </div>
     </div>
   </section>
@@ -295,18 +337,11 @@
   </section>
 
   <section class="card game" id="game">
-    <h2>Power Up To Level 10</h2>
-    <p class="gtip" id="gtip">Tap the trophy 10 times to level Matias up!</p>
-
-    <div class="meter" id="meter" aria-hidden="true"></div>
-
-    <div class="lvlwrap">
-      <div class="lvl" id="lvl">0</div>
-      <button class="tapper" id="tapper" type="button" aria-label="Tap to level up">🏆</button>
-    </div>
-
+    <h2>Level 10 Unlocked</h2>
+    <p class="gtip" id="gtip">Keep scrolling to power Matias all the way up…</p>
+    <div class="trophy" id="trophy">🏆</div>
+    <div class="winline" id="winline">A DECADE OF AWESOME!</div>
     <div class="burst" id="burst" aria-hidden="true"></div>
-    <button class="reset" id="reset" type="button" hidden>Play again ↺</button>
   </section>
 
   <section class="cta">
@@ -348,17 +383,18 @@
     }
   })();
 
-  /* ====== MINI GAME: power up 0 → 10 ====== */
+  /* ====== SCROLL POWER BAR: fills 0 → 10 down the page ====== */
   (function () {
-    const meter  = document.getElementById("meter");
-    const lvlEl  = document.getElementById("lvl");
-    const tapper = document.getElementById("tapper");
+    const rail   = document.getElementById("rail");
+    const fill   = document.getElementById("railFill");
+    const numEl  = document.getElementById("railNum");
+    const pipBox = document.getElementById("railPips");
+    const game   = document.getElementById("game");
     const tip    = document.getElementById("gtip");
     const burst  = document.getElementById("burst");
-    const reset  = document.getElementById("reset");
 
     const CHEERS = [
-      "Tap the trophy 10 times to level Matias up!",
+      "Keep scrolling to power Matias all the way up…",
       "Level 1 — a baby brawler appears 👶",
       "Level 2 — learning to bounce 🤸",
       "Level 3 — first victory dance 💃",
@@ -367,69 +403,65 @@
       "Level 6 — super speed acquired 🏃",
       "Level 7 — combo king 🔥",
       "Level 8 — almost unstoppable 💪",
-      "Level 9 — one tap from glory ✨",
-      "LEVEL 10 — A DECADE OF AWESOME! 🏆🎉"
+      "Level 9 — one scroll from glory ✨",
+      "LEVEL 10 — 10 years of pure awesome 🏆"
     ];
 
-    let level = 0;
-
-    for (let i = 0; i <= 10; i++) {
-      const pip = document.createElement("span");
-      pip.textContent = i;
-      meter.appendChild(pip);
+    /* tick marks every 10% of the tube */
+    for (let i = 1; i < 10; i++) {
+      const b = document.createElement("b");
+      b.style.bottom = i * 10 + "%";
+      pipBox.appendChild(b);
     }
-    const pips = meter.children;
-    pips[0].classList.add("on");
+
+    let level = -1, won = false, ticking = false;
 
     function blast() {
       const glyphs = ["🎉","⭐","💥","🎈","🏆","✨","🎊"];
-      for (let i = 0; i < 16; i++) {
+      for (let i = 0; i < 18; i++) {
         const p = document.createElement("i");
         p.textContent = glyphs[i % glyphs.length];
-        const a = (Math.PI * 2 * i) / 16;
-        p.style.setProperty("--dx", (Math.cos(a) * 130).toFixed(0) + "px");
-        p.style.setProperty("--dy", (Math.sin(a) * 130 - 40).toFixed(0) + "px");
+        const a = (Math.PI * 2 * i) / 18;
+        p.style.setProperty("--dx", (Math.cos(a) * 140).toFixed(0) + "px");
+        p.style.setProperty("--dy", (Math.sin(a) * 140 - 40).toFixed(0) + "px");
         burst.appendChild(p);
         setTimeout(() => p.remove(), 1000);
       }
     }
 
-    tapper.addEventListener("click", () => {
-      if (level >= 10) return;
-      level++;
-      lvlEl.textContent = level;
-      pips[level].classList.add("on");
-      tip.textContent = CHEERS[level];
+    function update() {
+      ticking = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 1;
 
-      lvlEl.animate(
-        [{ transform: "scale(1.5)" }, { transform: "scale(1)" }],
-        { duration: 320, easing: "cubic-bezier(.2,1.8,.4,1)" }
-      );
+      fill.style.height = (pct * 100).toFixed(1) + "%";
 
-      if (level === 10) {
-        lvlEl.classList.add("win");
-        for (const p of pips) p.classList.add("max");
-        tapper.disabled = true;
-        reset.hidden = false;
+      const lv = Math.min(10, Math.floor(pct * 10 + 0.0001));
+      if (lv !== level) {
+        level = lv;
+        numEl.textContent = lv;
+        tip.textContent = CHEERS[lv];
+        numEl.animate(
+          [{ transform: "scale(1.6)" }, { transform: "scale(1)" }],
+          { duration: 300, easing: "cubic-bezier(.2,1.8,.4,1)" }
+        );
+      }
+
+      if (pct > 0.985 && !won) {
+        won = true;
+        rail.classList.add("maxed");
+        game.classList.add("won");
+        numEl.textContent = "10";
         blast();
-        if (navigator.vibrate) navigator.vibrate([40, 60, 120]);
-      } else if (navigator.vibrate) {
-        navigator.vibrate(18);
+        if (navigator.vibrate) navigator.vibrate([40, 60, 140]);
       }
-    });
+    }
 
-    reset.addEventListener("click", () => {
-      level = 0;
-      lvlEl.textContent = "0";
-      lvlEl.classList.remove("win");
-      for (let i = 0; i < pips.length; i++) {
-        pips[i].classList.remove("max");
-        pips[i].classList.toggle("on", i === 0);
-      }
-      tip.textContent = CHEERS[0];
-      tapper.disabled = false;
-      reset.hidden = true;
-    });
+    addEventListener("scroll", () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    addEventListener("resize", update);
+    update();
   })();
 
   /* tap-to-bounce on the big 10 */
